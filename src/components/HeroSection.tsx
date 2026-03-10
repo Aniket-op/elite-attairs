@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import heroSlide1 from "@/assets/hero-banner.png";
 import heroSlide2 from "@/assets/hero-slide2.png";
 import heroSlide3 from "@/assets/hero-slide3.png";
@@ -12,6 +13,7 @@ const slides = [
     headline: <>Elevate<br /><span className="italic font-light">Your Style</span></>,
     subtext: <>Premium Ethnic &amp; Western Wear<br />for Men &amp; Women</>,
     cta: "Shop Now",
+    slug: "new-arrivals",
   },
   {
     image: heroSlide2,
@@ -19,6 +21,7 @@ const slides = [
     headline: <>Redefine<br /><span className="italic font-light">Elegance</span></>,
     subtext: <>Luxury Sherwanis &amp; Suits<br />Crafted for the Modern Man</>,
     cta: "Shop Men",
+    slug: "men",
   },
   {
     image: heroSlide3,
@@ -26,6 +29,7 @@ const slides = [
     headline: <>Timeless<br /><span className="italic font-light">Traditions</span></>,
     subtext: <>Bridal &amp; Wedding Collections<br />Designed with Love</>,
     cta: "Shop Collection",
+    slug: "women",
   },
 ];
 
@@ -123,9 +127,9 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="mt-10"
           >
-            <a href="#" className="luxury-btn-hero">
+            <Link to={`/category/${slide.slug}`} className="luxury-btn-hero">
               {slide.cta}
-            </a>
+            </Link>
           </motion.div>
         </div>
       </div>

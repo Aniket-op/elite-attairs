@@ -1,11 +1,12 @@
-import { Truck, RotateCcw, Shield, Award, Gift } from "lucide-react";
+import { Truck, Shield, Award, Gift, Mail } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const features = [
-  { icon: Award, label: "About Us" },
-  { icon: Truck, label: "Free Shipping" },
-  { icon: RotateCcw, label: "Easy Returns" },
-  { icon: Shield, label: "Secure Payment" },
-  { icon: Gift, label: "Premium Quality" },
+  { icon: Award, label: "About Us", link: "/about" },
+  { icon: Truck, label: "FAQ & Shipping", link: "/faq" },
+  { icon: Shield, label: "Secure Payment", link: "/faq" },
+  { icon: Mail, label: "Contact Us", link: "/contact" },
+  { icon: Gift, label: "Premium Quality", link: "/about" },
 ];
 
 const Footer = () => (
@@ -16,13 +17,13 @@ const Footer = () => (
         <div className="flex flex-wrap items-center justify-center gap-3 md:gap-0">
           {features.map((f, i) => (
             <span key={f.label} className="flex items-center">
-              <a
-                href="#"
+              <Link
+                to={f.link}
                 className="flex items-center gap-1.5 font-body text-[10px] tracking-[0.15em] uppercase text-foreground/70 hover:text-gold transition-colors duration-300 px-3"
               >
                 <f.icon size={13} strokeWidth={1.5} />
                 {f.label}
-              </a>
+              </Link>
               {i < features.length - 1 && (
                 <span className="hidden md:inline text-muted-foreground/30 text-xs">|</span>
               )}
