@@ -1,0 +1,162 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 36 33% 97%;
+    --foreground: 0 0% 8%;
+
+    --card: 36 30% 94%;
+    --card-foreground: 0 0% 8%;
+
+    --popover: 36 33% 97%;
+    --popover-foreground: 0 0% 8%;
+
+    --primary: 0 0% 8%;
+    --primary-foreground: 36 33% 97%;
+
+    --secondary: 36 25% 90%;
+    --secondary-foreground: 0 0% 8%;
+
+    --muted: 36 20% 92%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 36 60% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --gold: 36 60% 50%;
+    --gold-light: 40 55% 65%;
+    --gold-dark: 33 70% 32%;
+    --gold-shimmer: 42 80% 75%;
+    --cream: 36 33% 97%;
+    --beige: 36 25% 90%;
+    --charcoal: 0 0% 12%;
+    --warm-black: 20 10% 6%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 36 18% 82%;
+    --input: 36 20% 85%;
+    --ring: 36 60% 50%;
+
+    --radius: 0.25rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .luxury-btn {
+    @apply relative inline-block border-2 border-foreground bg-foreground text-primary-foreground px-10 py-3.5 text-[11px] font-body font-semibold tracking-[0.25em] uppercase transition-all duration-500 hover:bg-transparent hover:text-foreground overflow-hidden;
+  }
+
+  .luxury-btn-outline {
+    @apply relative inline-block border-2 border-foreground bg-transparent text-foreground px-10 py-3.5 text-[11px] font-body font-semibold tracking-[0.25em] uppercase transition-all duration-500 hover:bg-foreground hover:text-primary-foreground overflow-hidden;
+  }
+
+  .luxury-btn-gold {
+    @apply relative inline-block border-2 border-gold bg-gold text-accent-foreground px-10 py-3.5 text-[11px] font-body font-semibold tracking-[0.25em] uppercase transition-all duration-500 hover:bg-transparent hover:text-gold overflow-hidden;
+  }
+
+  .luxury-btn-hero {
+    @apply relative inline-block border-2 border-primary-foreground/80 bg-transparent text-primary-foreground px-12 py-4 text-[11px] font-body font-semibold tracking-[0.3em] uppercase transition-all duration-500 hover:bg-primary-foreground hover:text-foreground backdrop-blur-sm overflow-hidden;
+  }
+
+  .section-title {
+    @apply font-display text-3xl md:text-5xl font-light tracking-wide text-foreground;
+  }
+
+  .section-subtitle {
+    @apply font-body text-[11px] tracking-[0.3em] uppercase text-muted-foreground mt-3;
+  }
+
+  .card-overlay {
+    @apply absolute inset-0 bg-gradient-to-t from-warm-black/70 via-warm-black/10 to-transparent transition-all duration-700;
+  }
+
+  .card-overlay-hover {
+    @apply absolute inset-0 bg-gradient-to-t from-warm-black/80 via-warm-black/20 to-transparent opacity-60 group-hover:opacity-100 transition-all duration-700;
+  }
+
+  .hover-zoom {
+    transition: transform 1200ms ease-out;
+  }
+
+  .group:hover .hover-zoom {
+    transform: scale(1.1);
+  }
+
+  .gold-gradient-text {
+    @apply bg-gradient-to-r from-gold-dark via-gold to-gold-light bg-clip-text text-transparent;
+  }
+
+  .gold-divider {
+    @apply h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent;
+  }
+
+  .shimmer {
+    @apply relative overflow-hidden;
+  }
+
+  .shimmer::after {
+    content: '';
+    @apply absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-primary-foreground/10 to-transparent;
+    animation: shimmer 3s infinite;
+  }
+
+  @keyframes shimmer {
+    100% { transform: translateX(100%); }
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+
+  @keyframes pulse-gold {
+    0%, 100% { box-shadow: 0 0 0 0 hsl(36 60% 50% / 0.3); }
+    50% { box-shadow: 0 0 20px 4px hsl(36 60% 50% / 0.15); }
+  }
+
+  .pulse-gold {
+    animation: pulse-gold 3s ease-in-out infinite;
+  }
+}
