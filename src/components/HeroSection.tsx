@@ -89,13 +89,13 @@ const HeroSection = () => {
           transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
           src={slide.image}
           alt={slide.alt}
-          className="absolute inset-0 h-full w-full object-cover object-top"
+          className="absolute inset-0 h-full w-full object-cover object-[75%_top] md:object-top"
         />
       </AnimatePresence>
 
       {/* Gradient overlays */}
       <div className="absolute inset-0 bg-gradient-to-r from-warm-black/90 via-warm-black/60 via-40% to-transparent pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-t from-warm-black/40 via-transparent to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-warm-black/70 via-warm-black/30 md:from-warm-black/40 md:via-transparent to-transparent pointer-events-none" />
 
       {/* Text content */}
       <div className="absolute inset-0 flex items-center">

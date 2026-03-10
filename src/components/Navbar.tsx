@@ -1,7 +1,13 @@
 import { Heart, ShoppingBag, User, Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
-const navLinks = ["Women", "Men", "New Arrivals", "Sale"];
+const navLinks = [
+  { label: "Women", slug: "women" },
+  { label: "Men", slug: "men" },
+  { label: "New Arrivals", slug: "new-arrivals" },
+  { label: "Sale", slug: "sale" },
+];
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -16,29 +22,29 @@ const Navbar = () => {
   return (
     <nav
       className={`sticky top-0 z-50 transition-all duration-500 ${scrolled
-          ? "bg-background/95 backdrop-blur-md shadow-[0_2px_20px_-4px_hsl(var(--gold)/0.15)] border-b border-gold/10"
-          : "bg-background border-b border-border"
+        ? "bg-background/95 backdrop-blur-md shadow-[0_2px_20px_-4px_hsl(var(--gold)/0.15)] border-b border-gold/10"
+        : "bg-background border-b border-border"
         }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         {/* Logo */}
-        <a href="/" className="flex items-center">
+        <Link to="/" className="flex items-center">
           <span className="font-display text-2xl md:text-3xl font-semibold tracking-[0.15em] text-foreground leading-none">
             ELITE ATTIRE
           </span>
-        </a>
+        </Link>
 
         {/* Desktop Nav with dividers */}
         <ul className="hidden lg:flex items-center gap-0">
           {navLinks.map((link, i) => (
-            <li key={link} className="flex items-center">
-              <a
-                href="#"
+            <li key={link.slug} className="flex items-center">
+              <Link
+                to={`/category/${link.slug}`}
                 className="relative font-body text-[11px] font-medium tracking-[0.2em] uppercase text-foreground transition-colors hover:text-gold group px-5"
               >
-                {link}
+                {link.label}
                 <span className="absolute -bottom-1 left-0 h-[1.5px] w-0 bg-gold transition-all duration-500 group-hover:w-full" />
-              </a>
+              </Link>
               {i < navLinks.length - 1 && (
                 <span className="text-muted-foreground/40 text-xs">|</span>
               )}
@@ -76,10 +82,14 @@ const Navbar = () => {
         <div className="lg:hidden border-t border-border bg-background px-6 pb-6 animate-fade-in">
           <ul className="flex flex-col gap-5 pt-6">
             {navLinks.map((link) => (
-              <li key={link}>
-                <a href="#" className="font-body text-sm tracking-[0.2em] uppercase text-foreground hover:text-gold transition-colors">
-                  {link}
-                </a>
+              <li key={link.slug}>
+                <Link
+                  to={`/category/${link.slug}`}
+                  onClick={() => setMobileOpen(false)}
+                  className="font-body text-sm tracking-[0.2em] uppercase text-foreground hover:text-gold transition-colors"
+                >
+                  {link.label}
+                </Link>
               </li>
             ))}
             <li className="border-t border-border pt-4">
