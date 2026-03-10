@@ -1,6 +1,8 @@
-import { Heart, ShoppingBag, User, Menu, X } from "lucide-react";
+import { Heart, User, Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { CartSheet } from "./CartSheet";
+import { WishlistSheet } from "./WishlistSheet";
 
 const navLinks = [
   { label: "Women", slug: "women" },
@@ -58,16 +60,8 @@ const Navbar = () => {
             <User size={17} strokeWidth={1.5} />
             <span className="font-body text-[10px] tracking-[0.15em] uppercase">Login</span>
           </a>
-          <a href="#" className="hidden md:flex items-center gap-1.5 text-foreground hover:text-gold transition-colors duration-300">
-            <Heart size={17} strokeWidth={1.5} />
-            <span className="font-body text-[10px] tracking-[0.15em] uppercase">Wishlist</span>
-          </a>
-          <a href="#" className="relative flex items-center gap-1.5 text-foreground hover:text-gold transition-colors duration-300">
-            <ShoppingBag size={17} strokeWidth={1.5} />
-            <span className="absolute -top-1.5 -right-2 flex h-4 w-4 items-center justify-center rounded-full bg-gold text-[8px] font-bold text-accent-foreground">
-              0
-            </span>
-          </a>
+          <WishlistSheet />
+          <CartSheet />
           <button
             className="lg:hidden text-foreground"
             onClick={() => setMobileOpen(!mobileOpen)}

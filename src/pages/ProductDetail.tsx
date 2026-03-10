@@ -1,17 +1,22 @@
 import { motion } from "framer-motion";
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, Ruler, Palette, Shirt, MessageCircle } from "lucide-react";
+import { ArrowLeft, Ruler, Palette, Shirt, MessageCircle, ShoppingBag, Heart } from "lucide-react";
 import { useState } from "react";
+import { toast } from "sonner";
 import AnnouncementBar from "@/components/AnnouncementBar";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
 import { getProductById, getWhatsAppLink, products } from "@/data/products";
+import { useCart } from "@/context/CartContext";
+import { useWishlist } from "@/context/WishlistContext";
 
 const ProductDetail = () => {
     const { id } = useParams<{ id: string }>();
     const product = id ? getProductById(id) : undefined;
     const [selectedSize, setSelectedSize] = useState<string | null>(null);
+    const { addItem } = useCart();
+    const { toggleWishlist, isInWishlist } = useWishlist();
 
     // Get related products (same category, excluding current)
     const relatedProducts = product
@@ -44,6 +49,15 @@ const ProductDetail = () => {
         : 0;
 
     const whatsappLink = getWhatsAppLink(product);
+    const isWishlisted = isInWishlist(product.id);
+
+    const handleAddToCart = () => {
+        if (!selectedSize) {
+            toast.error("Please select a size first");
+            return;
+        }
+        addItem(product, selectedSize, 1);
+    };
 
     return (
         <div className="min-h-screen bg-background">
@@ -84,10 +98,10 @@ const ProductDetail = () => {
                                     <span
                                         key={tag}
                                         className={`inline-block px-3 py-1.5 text-[9px] font-body font-bold tracking-[0.15em] uppercase ${tag.includes("Off")
-                                                ? "bg-red-600 text-white"
-                                                : tag === "Bestseller"
-                                                    ? "bg-gold text-accent-foreground"
-                                                    : "bg-foreground text-primary-foreground"
+                                            ? "bg-red-600 text-white"
+                                            : tag === "Bestseller"
+                                                ? "bg-gold text-accent-foreground"
+                                                : "bg-foreground text-primary-foreground"
                                             }`}
                                     >
                                         {tag}
@@ -185,8 +199,8 @@ const ProductDetail = () => {
                                         key={size}
                                         onClick={() => setSelectedSize(size)}
                                         className={`min-w-[48px] px-4 py-2.5 border text-[11px] font-body font-medium tracking-[0.15em] uppercase transition-all duration-300 ${selectedSize === size
-                                                ? "border-gold bg-gold text-accent-foreground"
-                                                : "border-border text-foreground hover:border-gold"
+                                            ? "border-gold bg-gold text-accent-foreground"
+                                            : "border-border text-foreground hover:border-gold"
                                             }`}
                                     >
                                         {size}
@@ -195,20 +209,43 @@ const ProductDetail = () => {
                             </div>
                         </div>
 
-                        {/* Inquire Now Button (WhatsApp) */}
+                        {/* Action Buttons */}
                         <div className="mt-8 space-y-3">
+                            {/* Primary Cart/Checkout Row */}
+                            <div className="flex gap-3">
+                                <button
+                                    onClick={handleAddToCart}
+                                    className="flex-1 flex items-center justify-center gap-2 bg-foreground text-primary-foreground hover:bg-gold hover:text-accent-foreground px-6 py-4 font-body text-[12px] font-bold tracking-[0.2em] uppercase transition-all duration-300"
+                                >
+                                    <ShoppingBag size={18} strokeWidth={1.5} />
+                                    Add to Cart
+                                </button>
+                                <button
+                                    onClick={() => toggleWishlist(product)}
+                                    className={`flex items-center justify-center w-14 border transition-all duration-300 ${isWishlisted
+                                            ? "border-gold bg-gold/5 text-gold"
+                                            : "border-border bg-background text-foreground hover:border-gold hover:text-gold"
+                                        }`}
+                                    aria-label="Toggle Wishlist"
+                                >
+                                    <Heart
+                                        size={20}
+                                        strokeWidth={isWishlisted ? 2 : 1.5}
+                                        className={isWishlisted ? "fill-gold" : ""}
+                                    />
+                                </button>
+                            </div>
+
+                            {/* WhatsApp Button */}
                             <a
                                 href={whatsappLink}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center justify-center gap-3 w-full bg-[#25D366] hover:bg-[#20BD5A] text-white px-8 py-4 font-body text-[12px] font-bold tracking-[0.2em] uppercase transition-all duration-300"
+                                className="flex items-center justify-center gap-3 w-full border border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white px-8 py-3 font-body text-[11px] font-bold tracking-[0.2em] uppercase transition-all duration-300"
                             >
-                                <MessageCircle size={18} strokeWidth={2} />
-                                Inquire on WhatsApp
+                                <MessageCircle size={16} strokeWidth={2} />
+                                Inquire / Custom Fit on WhatsApp
                             </a>
-                            <p className="font-body text-[10px] text-center text-muted-foreground tracking-wider">
-                                Chat with us directly to place your order or ask questions
-                            </p>
                         </div>
 
                         {/* Trust badges */}

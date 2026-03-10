@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { Heart } from "lucide-react";
 import type { Product } from "@/data/products";
+import { useWishlist } from "@/context/WishlistContext";
 
 interface ProductCardProps {
     product: Product;
@@ -8,6 +10,9 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ product, index }: ProductCardProps) => {
+    const { toggleWishlist, isInWishlist } = useWishlist();
+    const isWishlisted = isInWishlist(product.id);
+
     const discount = product.originalPrice
         ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)
         : 0;
@@ -30,6 +35,21 @@ const ProductCard = ({ product, index }: ProductCardProps) => {
                         alt={product.name}
                         className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
+
+                    {/* Wishlist Button */}
+                    <button
+                        onClick={(e) => {
+                            e.preventDefault();
+                            toggleWishlist(product);
+                        }}
+                        className={`absolute top-3 right-3 z-10 p-2 rounded-full backdrop-blur-md transition-all duration-300 ${isWishlisted
+                                ? "bg-white/90 text-gold hover:bg-white"
+                                : "bg-white/30 text-foreground hover:bg-white/80 hover:text-gold"
+                            }`}
+                    >
+                        <Heart size={16} strokeWidth={isWishlisted ? 2 : 1.5} className={isWishlisted ? "fill-gold" : ""} />
+                    </button>
+
                     {/* Tags */}
                     {product.tags && product.tags.length > 0 && (
                         <div className="absolute top-3 left-3 flex flex-col gap-1.5">
@@ -37,12 +57,12 @@ const ProductCard = ({ product, index }: ProductCardProps) => {
                                 <span
                                     key={tag}
                                     className={`inline-block px-2.5 py-1 text-[9px] font-body font-bold tracking-[0.15em] uppercase ${tag.includes("Off")
-                                            ? "bg-red-600 text-white"
-                                            : tag === "Bestseller"
-                                                ? "bg-gold text-accent-foreground"
-                                                : tag === "New Arrival" || tag === "Trending"
-                                                    ? "bg-foreground text-primary-foreground"
-                                                    : "bg-warm-black/80 text-primary-foreground"
+                                        ? "bg-red-600 text-white"
+                                        : tag === "Bestseller"
+                                            ? "bg-gold text-accent-foreground"
+                                            : tag === "New Arrival" || tag === "Trending"
+                                                ? "bg-foreground text-primary-foreground"
+                                                : "bg-warm-black/80 text-primary-foreground"
                                         }`}
                                 >
                                     {tag}
