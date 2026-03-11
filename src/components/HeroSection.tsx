@@ -1,43 +1,49 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import heroSlide1 from "@/assets/hero-banner.png";
-import heroSlide2 from "@/assets/hero-slide2.png";
-import heroSlide3 from "@/assets/hero-slide3.png";
+import heroVideo1 from "@/assets/hero-section-video1.mp4";
+import heroVideo2 from "@/assets/Hero-section-video2.mp4";
+import heroVideo3 from "@/assets/hero-section-video3.mp4";
+import heroVideo4 from "@/assets/Hero-section-video4.mp4";
 
 const slides = [
   {
-    image: heroSlide1,
-    alt: "Elegant Indian model in premium ethnic wear",
+    video: heroVideo1,
     headline: <>Elevate<br /><span className="italic font-light">Your Style</span></>,
     subtext: <>Premium Ethnic &amp; Western Wear<br />for Men &amp; Women</>,
     cta: "Shop Now",
     slug: "new-arrivals",
   },
   {
-    image: heroSlide2,
-    alt: "Handsome man in premium sherwani",
+    video: heroVideo2,
     headline: <>Redefine<br /><span className="italic font-light">Elegance</span></>,
     subtext: <>Luxury Sherwanis &amp; Suits<br />Crafted for the Modern Man</>,
     cta: "Shop Men",
     slug: "men",
   },
   {
-    image: heroSlide3,
-    alt: "Couple in premium ethnic fashion",
+    video: heroVideo3,
     headline: <>Timeless<br /><span className="italic font-light">Traditions</span></>,
     subtext: <>Bridal &amp; Wedding Collections<br />Designed with Love</>,
     cta: "Shop Collection",
     slug: "women",
   },
+  {
+    video: heroVideo4,
+    headline: <>New<br /><span className="italic font-light">Season</span></>,
+    subtext: <>Discover the Latest Arrivals<br />Exclusive Styles Just for You</>,
+    cta: "Explore Now",
+    slug: "new-arrivals",
+  },
 ];
 
-const SLIDE_DURATION = 5000;
+const SLIDE_DURATION = 8000;
 
 const HeroSection = () => {
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(1);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   const goTo = useCallback(
     (index: number) => {
@@ -57,10 +63,19 @@ const HeroSection = () => {
     setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
   }, []);
 
+  // Auto-advance on video end or by timer
   useEffect(() => {
     const timer = setInterval(next, SLIDE_DURATION);
     return () => clearInterval(timer);
   }, [next]);
+
+  // Play video from start whenever slide changes
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.currentTime = 0;
+      videoRef.current.play().catch(() => {/* autoplay blocked, no-op */ });
+    }
+  }, [current]);
 
   const slideVariants = {
     enter: (dir: number) => ({
@@ -81,9 +96,10 @@ const HeroSection = () => {
 
   return (
     <section className="relative h-[55vh] md:h-[90vh] overflow-hidden bg-warm-black">
-      {/* Sliding images */}
+      {/* Sliding videos */}
       <AnimatePresence initial={false} custom={direction} mode="popLayout">
-        <motion.img
+        <motion.video
+          ref={videoRef}
           key={current}
           custom={direction}
           variants={slideVariants}
@@ -91,8 +107,11 @@ const HeroSection = () => {
           animate="center"
           exit="exit"
           transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
-          src={slide.image}
-          alt={slide.alt}
+          src={slide.video}
+          autoPlay
+          muted
+          loop
+          playsInline
           className="absolute inset-0 h-full w-full object-cover object-[75%_top] md:object-top"
         />
       </AnimatePresence>
