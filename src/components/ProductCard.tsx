@@ -1,10 +1,8 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Heart } from "lucide-react";
-import { useRef } from "react";
 import type { Product } from "@/data/products";
 import { useWishlist } from "@/context/WishlistContext";
-import heroVideo4 from "@/assets/Hero-section-video4.mp4";
 
 interface ProductCardProps {
     product: Product;
@@ -14,21 +12,6 @@ interface ProductCardProps {
 const ProductCard = ({ product, index }: ProductCardProps) => {
     const { toggleWishlist, isInWishlist } = useWishlist();
     const isWishlisted = isInWishlist(product.id);
-    const videoRef = useRef<HTMLVideoElement>(null);
-
-    const handleMouseEnter = () => {
-        if (videoRef.current) {
-            videoRef.current.currentTime = 0;
-            videoRef.current.play().catch(() => { });
-        }
-    };
-
-    const handleMouseLeave = () => {
-        if (videoRef.current) {
-            videoRef.current.pause();
-            videoRef.current.currentTime = 0;
-        }
-    };
 
     const discount = product.originalPrice
         ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)
@@ -44,24 +27,13 @@ const ProductCard = ({ product, index }: ProductCardProps) => {
             <Link
                 to={`/product/${product.id}`}
                 className="group block"
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
             >
-                {/* Image + Video */}
+                {/* Image */}
                 <div className="relative aspect-[3/4] overflow-hidden bg-card mb-4">
                     <img
                         src={product.image}
                         alt={product.name}
                         className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    {/* Hover video overlay */}
-                    <video
-                        ref={videoRef}
-                        src={heroVideo4}
-                        muted
-                        playsInline
-                        loop
-                        className="absolute inset-0 h-full w-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                     />
 
                     {/* Wishlist Button */}

@@ -3,9 +3,9 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroVideo1 from "@/assets/hero-section-video1.mp4";
-import heroVideo2 from "@/assets/Hero-section-video2.mp4";
+import heroVideo2 from "@/assets/hero-section-video2.mp4";
 import heroVideo3 from "@/assets/hero-section-video3.mp4";
-import heroVideo4 from "@/assets/Hero-section-video4.mp4";
+import heroVideo4 from "@/assets/hero-section-video4.mp4";
 
 const slides = [
   {
