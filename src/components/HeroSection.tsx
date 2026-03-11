@@ -112,7 +112,7 @@ const HeroSection = () => {
           muted
           loop
           playsInline
-          className="absolute inset-0 h-full w-full object-cover object-[75%_top] md:object-top"
+          className="absolute inset-0 h-full w-full object-cover object-[40%_top] md:object-top"
         />
       </AnimatePresence>
 
@@ -131,10 +131,10 @@ const HeroSection = () => {
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <h1 className="font-display text-5xl md:text-7xl lg:text-[6.5rem] font-light leading-[0.95] text-primary-foreground uppercase">
+              <h1 className="font-display text-3xl md:text-7xl lg:text-[6.5rem] font-light leading-[0.95] text-primary-foreground uppercase">
                 {slide.headline}
               </h1>
-              <p className="mt-6 max-w-md font-body text-sm md:text-base font-light tracking-wider text-primary-foreground/70 leading-relaxed">
+              <p className="mt-6 max-w-md font-body text-sm md:text-xl font-light tracking-wider text-primary-foreground/70 leading-relaxed">
                 {slide.subtext}
               </p>
             </motion.div>
