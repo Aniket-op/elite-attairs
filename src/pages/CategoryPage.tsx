@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useSearchParams } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import AnnouncementBar from "@/components/AnnouncementBar";
 import Navbar from "@/components/Navbar";
@@ -9,8 +9,19 @@ import { getProductsByCategory, categories } from "@/data/products";
 
 const CategoryPage = () => {
     const { slug } = useParams<{ slug: string }>();
+    const [searchParams] = useSearchParams();
+    const subcategory = searchParams.get("sub");
+    
     const category = categories.find((c) => c.slug === slug);
-    const categoryProducts = slug ? getProductsByCategory(slug) : [];
+    let categoryProducts = slug ? getProductsByCategory(slug) : [];
+
+    if (subcategory) {
+        categoryProducts = categoryProducts.filter((p) => {
+            const searchTerms = [p.name.toLowerCase(), ...(p.tags?.map(t => t.toLowerCase()) || [])];
+            // Check if any search term includes the subcategory word
+            return searchTerms.some(term => term.includes(subcategory.toLowerCase()));
+        });
+    }
 
     if (!category) {
         return (
@@ -56,8 +67,8 @@ const CategoryPage = () => {
                                 Back to Home
                             </Link>
                         </nav>
-                        <h1 className="font-display text-4xl md:text-6xl font-light tracking-wide text-primary-foreground">
-                            {category.name}
+                        <h1 className="font-display text-4xl md:text-6xl font-light tracking-wide text-primary-foreground capitalize">
+                            {subcategory ? `${subcategory} - ${category.name}` : category.name}
                         </h1>
                         <p className="mt-4 font-body text-sm tracking-wider text-primary-foreground/50 max-w-lg mx-auto">
                             {category.description}

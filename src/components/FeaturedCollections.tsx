@@ -1,15 +1,15 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import traditionalImg from "@/assets/traditional-elegance.png";
-import westernImg from "@/assets/classic-western.png";
-import bridalImg from "@/assets/bridal-couture.png";
-import casualImg from "@/assets/smart-casuals.png";
+import traditionalMen from "@/assets/traditional jacket men.jpg";
+import womenLongCoat from "@/assets/Women long Coat.jpg";
+import kidsCollection from "@/assets/kids-collection.jpg";
+import handGloves from "@/assets/hand gloves - Accessories 1.jpg";
 
 const collections = [
-  { title: "Men", slug: "men", image: westernImg },
-  { title: "Women", slug: "women", image: traditionalImg },
-  { title: "Kids", slug: "kids", image: casualImg }, // Placeholder image
-  { title: "Accessories", slug: "accessories", image: bridalImg }, // Placeholder image
+  { title: "Men", slug: "men", image: traditionalMen },
+  { title: "Women", slug: "women", image: womenLongCoat },
+  { title: "Kids", slug: "kids", image: kidsCollection },
+  { title: "Accessories", slug: "accessories", image: handGloves },
 ];
 
 const FeaturedCollections = () => (

@@ -10,6 +10,42 @@ import bridalImg from "@/assets/bridal-couture.png";
 import casualImg from "@/assets/smart-casuals.png";
 import newArrivalsImg from "@/assets/new-arrivals.png";
 import heroImg from "@/assets/hero-banner.png";
+import womensCardiganImg from "@/assets/womens-cardigan.png";
+import mensHoodieImg from "@/assets/mens-hoodie.png";
+import kidsSweaterImg from "@/assets/kids-sweater.png";
+import winterSocksImg from "@/assets/winter-socks.png";
+
+// --- New User Uploaded Images ---
+import tshirtMen2 from "@/assets/Tshirt men 2.jpg";
+import tshirtMen1 from "@/assets/Tshirt men.jpg";
+import leatherJacketMen from "@/assets/leather Jackets men.jpg";
+import lowerMen2 from "@/assets/lower men 2.jpg";
+import lowerMen1 from "@/assets/lower men.jpg";
+import tradJacketMen from "@/assets/traditional jacket men.jpg";
+import sweatshirtsMen2 from "@/assets/sweat shirts2.jpg";
+import sweatshirtsMen1 from "@/assets/sweatshirts.jpg";
+
+import womenLongCoat from "@/assets/Women long Coat.jpg";
+import cardigansWomen1 from "@/assets/cardigans - Women 1.jpg";
+import hoodiesWomen1 from "@/assets/hoodies - Women 1.jpg";
+import hoodiesWomen2 from "@/assets/hoodies - Women 2.jpg";
+import leatherJacketWomen from "@/assets/leather jacket women.jpg";
+import sweatshirtsWomen1 from "@/assets/sweatshirts - Women 1.jpg";
+import sweatshirtsWomen2 from "@/assets/sweatshirts - Women 2.jpg";
+import womenJacket from "@/assets/women jacket.jpg";
+
+import coatsKids from "@/assets/coats - Kids.jpg";
+import jacketKids1 from "@/assets/jacket - Kids 1.jpg";
+import jacketKids2 from "@/assets/jacket - Kids 2.jpg";
+import sweatersKids1 from "@/assets/sweaters - Kids 1.jpg";
+
+import cap2 from "@/assets/cap 2.jpg";
+import cap1 from "@/assets/cap1.jpg";
+import handGloves from "@/assets/hand gloves - Accessories 1.jpg";
+import mufflers1 from "@/assets/mufflers - Accessories 1.jpg";
+import mufflers2 from "@/assets/mufflers - Accessories 2.jpg";
+import thermal1 from "@/assets/thermal 1.jpg";
+import thermal2 from "@/assets/thermal 2.jpg";
 
 export interface Product {
     id: string;
@@ -91,6 +127,21 @@ export const products: Product[] = [
         color: "Champagne Gold",
     },
 
+
+    {
+        id: "w6",
+        name: "Cozy Wool Cardigan",
+        description:
+            "A delicate knitted cardigan with soft wool blend. A versatile layering piece for breezy evenings.",
+        price: 2999,
+        sizes: ["S", "M", "L"],
+        category: "women",
+        image: womensCardiganImg,
+        tags: ["Winter", "Cardigans"],
+        fabric: "Wool Blend",
+        color: "Cream White",
+    },
+
     // ─── Men's Collection ───
     {
         id: "m1",
@@ -144,6 +195,34 @@ export const products: Product[] = [
         image: casualImg,
         tags: ["Casual"],
         fabric: "Premium Cotton",
+        color: "Navy Blue",
+    },
+
+
+    {
+        id: "m6",
+        name: "Heavy Duty Winter Coat",
+        description:
+            "A sophisticated single-breasted overcoat. Perfect to wear over formal suits or casual outfits during harsh winters.",
+        price: 8999,
+        sizes: ["M", "L", "XL", "XXL"],
+        category: "men",
+        image: westernImg,
+        tags: ["Winter", "Coats"],
+        fabric: "Wool Mix",
+        color: "Charcoal Grey",
+    },
+    {
+        id: "m7",
+        name: "Premium Navy Blue Hoodie",
+        description:
+            "A premium thick cotton hoodie in dark navy blue. Perfect for everyday casual wear and layering.",
+        price: 3499,
+        sizes: ["S", "M", "L", "XL", "XXL"],
+        category: "men",
+        image: mensHoodieImg,
+        tags: ["Winter", "Hoodies"],
+        fabric: "Heavy Cotton Blended",
         color: "Navy Blue",
     },
 
@@ -201,6 +280,59 @@ export const products: Product[] = [
         fabric: "Tissue Silk",
         color: "Rose Gold",
     },
+    {
+        id: "n5",
+        name: "Women's Faux Leather Moto Jacket",
+        description:
+            "A striking faux leather moto jacket with asymmetrical zips. The contemporary design blends edgy style with modernity.",
+        price: 4599,
+        sizes: ["S", "M", "L", "XL"],
+        category: "new-arrivals",
+        image: leatherJacketWomen,
+        tags: ["New Arrival", "Trending"],
+        fabric: "PU Leather",
+        color: "Black",
+    },
+    {
+        id: "n6",
+        name: "Men's Ethnic Nehru Jacket",
+        description:
+            "An elegant traditional Nehru jacket with intricate motifs. A fresh take on festive ethnic wear.",
+        price: 3499,
+        sizes: ["M", "L", "XL", "XXL"],
+        category: "new-arrivals",
+        image: tradJacketMen,
+        tags: ["New Arrival"],
+        fabric: "Silk Blend",
+        color: "Mustard",
+    },
+    {
+        id: "n7",
+        name: "Elegant Woolen Trench Coat",
+        description:
+            "A sophisticated long woolen trench coat to elevate your winter wardrobe. Perfect for formal and smart-casual outings.",
+        price: 6999,
+        originalPrice: 8999,
+        sizes: ["S", "M", "L", "XL"],
+        category: "new-arrivals",
+        image: womenLongCoat,
+        tags: ["New Arrival", "Formal"],
+        fabric: "Wool Blend",
+        color: "Tan",
+    },
+    {
+        id: "n8",
+        name: "Premium Biker Leather Jacket",
+        description:
+            "A classic biker leather jacket featuring a rugged finish and modern styling. Rugged and elegant, perfect for winter statements.",
+        price: 7999,
+        sizes: ["M", "L", "XL", "XXL"],
+        category: "new-arrivals",
+        image: leatherJacketMen,
+        tags: ["New Arrival"],
+        fabric: "Genuine Leather",
+        color: "Brown",
+    },
 
     // ─── Sale Items ───
     {
@@ -253,52 +385,40 @@ export const products: Product[] = [
             "A comfortable and stylish mustard yellow kurta pajama set for boys. Features soft cotton blend fabric and subtle thread embroidery.",
         price: 3499,
         sizes: ["2-3Y", "4-5Y", "6-7Y", "8-9Y"],
-        category: "kids",
+        category: "sale",
         image: menImg, // Reusing image as placeholder
-        tags: ["Festive", "Kids"],
+        tags: ["Festive", "Men"],
         fabric: "Cotton Blend",
         color: "Mustard Yellow",
     },
     {
-        id: "k2",
-        name: "Girls Pink Silk Lehenga",
+        id: "k4",
+        name: "Knitted Winter Sweater",
         description:
-            "A cute and vibrant pink silk lehenga choli for little girls. Lightweight with elegant mirror work detailing.",
-        price: 4599,
+            "A charming cable-knit sweater suitable for family events and casual winter days. Extremely soft and gentle on the skin.",
+        price: 1499,
         sizes: ["2-3Y", "4-5Y", "6-7Y", "8-9Y"],
         category: "kids",
-        image: womenImg, // Reusing image as placeholder
-        tags: ["Kids", "Bestseller"],
-        fabric: "Art Silk",
-        color: "Pink",
+        image: kidsSweaterImg,
+        tags: ["Winter", "Sweaters"],
+        fabric: "Soft Acrylic",
+        color: "Red",
     },
-    
+
     // ─── Accessories ───
+
     {
-        id: "a1",
-        name: "Premium Winter Beanie",
+        id: "a3",
+        name: "Winter Thermal Socks",
         description:
-            "A soft and warm premium winter beanie hat. Perfect accessory to keep you cozy during cold months.",
-        price: 999,
+            "A pair of premium thick winter thermal socks in grey marl color. Keep your feet warm during extreme cold.",
+        price: 499,
         sizes: ["Free Size"],
         category: "accessories",
-        image: casualImg, // Reusing image as placeholder
-        tags: ["Winter", "Unisex"],
-        fabric: "Wool Merino Blend",
-        color: "Charcoal Grey",
-    },
-    {
-        id: "a2",
-        name: "Cashmere Muffler",
-        description:
-            "A luxurious cashmere blend muffler scarf. Elegant and incredibly soft, perfect for both men and women.",
-        price: 2499,
-        sizes: ["Free Size"],
-        category: "accessories",
-        image: traditionalImg, // Reusing image as placeholder
-        tags: ["Luxury", "Winter"],
-        fabric: "Cashmere Blend",
-        color: "Beige",
+        image: winterSocksImg,
+        tags: ["Winter", "Socks"],
+        fabric: "Thermal Wool Blend",
+        color: "Grey Marl",
     },
     {
         id: "s4",
@@ -314,6 +434,121 @@ export const products: Product[] = [
         fabric: "Cotton Linen Blend",
         color: "Beige",
     },
+    // --- New Men's Products ---
+    {
+        id: "m8", name: "Casual Cotton T-Shirt", description: "A comfortable, breathable casual t-shirt perfect for everyday wear.",
+        price: 999, sizes: ["S", "M", "L", "XL"], category: "men", image: tshirtMen1, tags: ["T-Shirts", "Casual"], fabric: "100% Cotton", color: "White"
+    },
+    {
+        id: "m9", name: "Graphic Print T-Shirt", description: "A trendy graphic print t-shirt for a modern casual look.",
+        price: 1199, sizes: ["M", "L", "XL"], category: "men", image: tshirtMen2, tags: ["T-Shirts", "Trendy"], fabric: "Cotton Blend", color: "Grey"
+    },
+    {
+        id: "m10", name: "Premium Biker Leather Jacket", description: "A classic biker leather jacket featuring a rugged finish and modern styling.",
+        price: 7999, sizes: ["M", "L", "XL", "XXL"], category: "men", image: leatherJacketMen, tags: ["Jacket", "Winter"], fabric: "Genuine Leather", color: "Brown"
+    },
+    {
+        id: "m11", name: "Comfort Fit Joggers", description: "Versatile track lower joggers for your daily athletic routines or lounging.",
+        price: 1499, sizes: ["M", "L", "XL"], category: "men", image: lowerMen1, tags: ["Lowers", "Athletic"], fabric: "Poly Cotton", color: "Black"
+    },
+    {
+        id: "m12", name: "Athletic Track Pants", description: "Premium athletic track pants with zipper pockets and a slim fit design.",
+        price: 1699, sizes: ["S", "M", "L", "XL"], category: "men", image: lowerMen2, tags: ["Lowers", "Sportswear"], fabric: "Polyester", color: "Navy"
+    },
+    {
+        id: "m13", name: "Ethnic Nehru Jacket", description: "A traditional Nehru jacket with intricate motifs, ideal for festive layering.",
+        price: 3499, sizes: ["M", "L", "XL", "XXL"], category: "men", image: tradJacketMen, tags: ["Jacket", "Traditional"], fabric: "Silk Blend", color: "Mustard"
+    },
+    {
+        id: "m14", name: "Classic Crewneck Sweatshirt", description: "A soft and warm classic crewneck sweatshirt.",
+        price: 2199, sizes: ["M", "L", "XL"], category: "men", image: sweatshirtsMen1, tags: ["Sweatshirts", "Winter"], fabric: "Fleece", color: "Olive"
+    },
+    {
+        id: "m15", name: "Vintage Wash Sweatshirt", description: "A stylish vintage wash sweatshirt for relaxed outings.",
+        price: 2499, sizes: ["S", "M", "L", "XL"], category: "men", image: sweatshirtsMen2, tags: ["Sweatshirts", "Casual"], fabric: "Cotton Blended Fleece", color: "Charcoal"
+    },
+
+    // --- New Women's Products ---
+    {
+        id: "w7", name: "Elegant Woolen Trench Coat", description: "A sophisticated long woolen trench coat to elevate your winter wardrobe.",
+        price: 6999, sizes: ["S", "M", "L", "XL"], category: "women", image: womenLongCoat, tags: ["Coats", "Winter"], fabric: "Wool Blend", color: "Tan"
+    },
+    {
+        id: "w8", name: "Chunky Knit Cardigan", description: "A beautifully crafted chunky knit cardigan with a relaxed fit.",
+        price: 2599, sizes: ["Free Size"], category: "women", image: cardigansWomen1, tags: ["Cardigans", "Winter"], fabric: "Acrylic Wool", color: "Blush Pink"
+    },
+    {
+        id: "w9", name: "Oversized Cozy Hoodie", description: "An ultra-soft oversized hoodie perfect for laid-back days.",
+        price: 1999, sizes: ["S", "M", "L"], category: "women", image: hoodiesWomen1, tags: ["Hoodies", "Lounge"], fabric: "Fleece", color: "Beige"
+    },
+    {
+        id: "w10", name: "Cropped Pullover Hoodie", description: "A trendy cropped pullover hoodie in vibrant colors.",
+        price: 1799, sizes: ["XS", "S", "M", "L"], category: "women", image: hoodiesWomen2, tags: ["Hoodies", "Trendy"], fabric: "Cotton Blend", color: "Red"
+    },
+    {
+        id: "w11", name: "Faux Leather Moto Jacket", description: "A striking faux leather moto jacket with asymmetrical zips.",
+        price: 4599, sizes: ["S", "M", "L", "XL"], category: "women", image: leatherJacketWomen, tags: ["Jacket", "Bestseller"], fabric: "PU Leather", color: "Black"
+    },
+    {
+        id: "w12", name: "Relaxed Fit Sweatshirt", description: "A comfortable, everyday relaxed fit sweatshirt.",
+        price: 1599, sizes: ["S", "M", "L", "XL"], category: "women", image: sweatshirtsWomen1, tags: ["Sweatshirts", "Casual"], fabric: "Cotton Terry", color: "Grey Melange"
+    },
+    {
+        id: "w13", name: "Pastel Terry Sweatshirt", description: "A lovely pastel-toned sweatshirt with a smooth finish.",
+        price: 1899, sizes: ["S", "M", "L"], category: "women", image: sweatshirtsWomen2, tags: ["Sweatshirts", "Soft"], fabric: "French Terry", color: "Lavender"
+    },
+    {
+        id: "w14", name: "Quilted Puffer Jacket", description: "A lightweight yet warm quilted puffer jacket for chilly evenings.",
+        price: 3299, sizes: ["S", "M", "L", "XL"], category: "women", image: womenJacket, tags: ["Jacket", "Winter"], fabric: "Polyester", color: "Navy"
+    },
+
+    // --- New Kids' Products ---
+    {
+        id: "k5", name: "Double Breasted Winter Coat", description: "A cute double breasted winter coat for kids.",
+        price: 2299, sizes: ["4-5Y", "6-7Y", "8-9Y"], category: "kids", image: coatsKids, tags: ["Coats", "Winter"], fabric: "Felt Wool", color: "Maroon"
+    },
+    {
+        id: "k6", name: "Kids Denim Jacket", description: "A classic rugged denim jacket tailored for kids.",
+        price: 1299, sizes: ["2-3Y", "4-5Y", "6-7Y", "8-9Y"], category: "kids", image: jacketKids1, tags: ["Jacket", "Denim"], fabric: "Denim", color: "Blue"
+    },
+    {
+        id: "k7", name: "Hooded Puffer Jacket", description: "A warm and durable hooded puffer jacket to keep the little ones snug.",
+        price: 1899, sizes: ["4-5Y", "6-7Y", "8-9Y"], category: "kids", image: jacketKids2, tags: ["Jacket", "Winter"], fabric: "Polyester", color: "Yellow"
+    },
+    {
+        id: "k8", name: "Crewneck Wool Sweater", description: "A lovely crewneck wool sweater perfect for family gatherings.",
+        price: 1199, sizes: ["2-3Y", "4-5Y", "6-7Y"], category: "kids", image: sweatersKids1, tags: ["Sweaters", "Warm"], fabric: "Wool Blended", color: "Green"
+    },
+
+    // --- New Accessories ---
+    {
+        id: "a4", name: "Classic Baseball Cap", description: "A timeless adjustable baseball cap for sunny days.",
+        price: 499, sizes: ["Free Size"], category: "accessories", image: cap1, tags: ["Caps", "Everyday"], fabric: "Cotton", color: "Black"
+    },
+    {
+        id: "a5", name: "Ribbed Beanie Cap", description: "A stretchable, soft ribbed beanie to protect from winter chills.",
+        price: 699, sizes: ["Free Size"], category: "accessories", image: cap2, tags: ["Caps", "Winter"], fabric: "Acrylic", color: "Grey"
+    },
+    {
+        id: "a6", name: "Thermal Touchscreen Gloves", description: "Warm hand gloves designed to let you use your smartphone.",
+        price: 899, sizes: ["M", "L"], category: "accessories", image: handGloves, tags: ["Hand Gloves", "Winter"], fabric: "Wool / Spandex", color: "Charcoal"
+    },
+    {
+        id: "a7", name: "Checked Wool Muffler", description: "A classic checked pattern woolen muffler.",
+        price: 1199, sizes: ["Free Size"], category: "accessories", image: mufflers1, tags: ["Mufflers", "Winter"], fabric: "Wool Blend", color: "Red/Black"
+    },
+    {
+        id: "a8", name: "Fringed Cashmere Muffler", description: "An ultra-soft premium cashmere muffler with elegant fringes.",
+        price: 2499, sizes: ["Free Size"], category: "accessories", image: mufflers2, tags: ["Mufflers", "Luxury"], fabric: "Cashmere", color: "Beige"
+    },
+    {
+        id: "a9", name: "Men's Base Layer Thermal Set", description: "A full thermal base layer set designed to trap body heat effectively.",
+        price: 1499, sizes: ["M", "L", "XL", "XXL"], category: "accessories", image: thermal1, tags: ["Thermal", "Winter"], fabric: "Thermal Knit", color: "Dark Grey"
+    },
+    {
+        id: "a10", name: "Women's Seamless Thermal Set", description: "A form-fitting seamless thermal set for women, perfect for layering.",
+        price: 1599, sizes: ["S", "M", "L", "XL"], category: "accessories", image: thermal2, tags: ["Thermal", "Winter"], fabric: "Stretch Fleece", color: "Light Grey"
+    }
 ];
 
 export const getProductsByCategory = (category: string): Product[] => {
@@ -329,4 +564,6 @@ export const categories = [
     { slug: "women", name: "Women", description: "Exquisite ethnic wear, jackets, coats, sweatshirts & cardigans" },
     { slug: "kids", name: "Kids", description: "Adorable and comfortable jackets, coats, and sweaters for little ones" },
     { slug: "accessories", name: "Accessories", description: "Comfortable thermals, socks, caps, mufflers & hand gloves for all" },
+    { slug: "new-arrivals", name: "New Arrivals", description: "The latest additions to our premium collections, fresh for this season." },
+    { slug: "sale", name: "Sale", description: "Amazing discounts on premium ethnic and western wear." },
 ];
