@@ -3,6 +3,7 @@ import { Mail, MapPin, Phone, Clock } from "lucide-react";
 import AnnouncementBar from "@/components/AnnouncementBar";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import EnquiryForm from "@/components/EnquiryForm";
 
 const ContactPage = () => {
     return (
@@ -112,61 +113,8 @@ const ContactPage = () => {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.2 }}
-                        className="bg-card border border-border p-8"
                     >
-                        <h2 className="font-display text-2xl font-light text-foreground mb-6">
-                            Send us a Message
-                        </h2>
-                        <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
-                            <div>
-                                <label className="block font-body text-[10px] tracking-[0.15em] uppercase text-muted-foreground mb-2">
-                                    Full Name
-                                </label>
-                                <input
-                                    type="text"
-                                    className="w-full bg-background border border-border px-4 py-3 font-body text-sm focus:outline-none focus:border-gold transition-colors"
-                                    placeholder="Your Name"
-                                />
-                            </div>
-
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                                <div>
-                                    <label className="block font-body text-[10px] tracking-[0.15em] uppercase text-muted-foreground mb-2">
-                                        Email Address
-                                    </label>
-                                    <input
-                                        type="email"
-                                        className="w-full bg-background border border-border px-4 py-3 font-body text-sm focus:outline-none focus:border-gold transition-colors"
-                                        placeholder="you@example.com"
-                                    />
-                                </div>
-                                <div>
-                                    <label className="block font-body text-[10px] tracking-[0.15em] uppercase text-muted-foreground mb-2">
-                                        Phone (Optional)
-                                    </label>
-                                    <input
-                                        type="tel"
-                                        className="w-full bg-background border border-border px-4 py-3 font-body text-sm focus:outline-none focus:border-gold transition-colors"
-                                        placeholder="+91"
-                                    />
-                                </div>
-                            </div>
-
-                            <div>
-                                <label className="block font-body text-[10px] tracking-[0.15em] uppercase text-muted-foreground mb-2">
-                                    Message
-                                </label>
-                                <textarea
-                                    rows={4}
-                                    className="w-full bg-background border border-border px-4 py-3 font-body text-sm focus:outline-none focus:border-gold transition-colors resize-none"
-                                    placeholder="How can we help you?"
-                                />
-                            </div>
-
-                            <button type="submit" className="luxury-btn w-full mt-2">
-                                Send Message
-                            </button>
-                        </form>
+                        <EnquiryForm />
                     </motion.div>
 
                 </div>

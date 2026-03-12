@@ -6,10 +6,10 @@ import bridalImg from "@/assets/bridal-couture.png";
 import casualImg from "@/assets/smart-casuals.png";
 
 const collections = [
-  { title: "Traditional Elegance", slug: "women", image: traditionalImg },
-  { title: "Classic Western", slug: "men", image: westernImg },
-  { title: "Bridal Couture", slug: "women", image: bridalImg },
-  { title: "Smart Casuals", slug: "men", image: casualImg },
+  { title: "Men", slug: "men", image: westernImg },
+  { title: "Women", slug: "women", image: traditionalImg },
+  { title: "Kids", slug: "kids", image: casualImg }, // Placeholder image
+  { title: "Accessories", slug: "accessories", image: bridalImg }, // Placeholder image
 ];
 
 const FeaturedCollections = () => (

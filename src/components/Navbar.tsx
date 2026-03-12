@@ -5,10 +5,10 @@ import { CartSheet } from "./CartSheet";
 import { WishlistSheet } from "./WishlistSheet";
 
 const navLinks = [
-  { label: "Women", slug: "women" },
   { label: "Men", slug: "men" },
-  { label: "New Arrivals", slug: "new-arrivals" },
-  { label: "Sale", slug: "sale" },
+  { label: "Women", slug: "women" },
+  { label: "Kids", slug: "kids" },
+  { label: "Accessories", slug: "accessories" },
 ];
 
 const Navbar = () => {

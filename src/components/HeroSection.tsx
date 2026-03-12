@@ -12,8 +12,8 @@ const slides = [
     video: heroVideo1,
     headline: <>Elevate<br /><span className="italic font-light">Your Style</span></>,
     subtext: <>Premium Ethnic &amp; Western Wear<br />for Men &amp; Women</>,
-    cta: "Shop Now",
-    slug: "new-arrivals",
+    cta: "Shop Accessories",
+    slug: "accessories",
   },
   {
     video: heroVideo2,
@@ -33,8 +33,8 @@ const slides = [
     video: heroVideo4,
     headline: <>New<br /><span className="italic font-light">Season</span></>,
     subtext: <>Discover the Latest Arrivals<br />Exclusive Styles Just for You</>,
-    cta: "Explore Now",
-    slug: "new-arrivals",
+    cta: "Explore Kids",
+    slug: "kids",
   },
 ];
 

@@ -18,7 +18,7 @@ export interface Product {
     price: number;
     originalPrice?: number;
     sizes: string[];
-    category: "women" | "men" | "new-arrivals" | "sale";
+    category: "women" | "men" | "kids" | "accessories" | "new-arrivals" | "sale";
     image: string;
     tags?: string[];
     fabric?: string;
@@ -245,6 +245,61 @@ export const products: Product[] = [
         fabric: "Net with Satin Lining",
         color: "Blush Pink",
     },
+    // ─── Kids' Collection ───
+    {
+        id: "k1",
+        name: "Boys Kurta Pajama Set",
+        description:
+            "A comfortable and stylish mustard yellow kurta pajama set for boys. Features soft cotton blend fabric and subtle thread embroidery.",
+        price: 3499,
+        sizes: ["2-3Y", "4-5Y", "6-7Y", "8-9Y"],
+        category: "kids",
+        image: menImg, // Reusing image as placeholder
+        tags: ["Festive", "Kids"],
+        fabric: "Cotton Blend",
+        color: "Mustard Yellow",
+    },
+    {
+        id: "k2",
+        name: "Girls Pink Silk Lehenga",
+        description:
+            "A cute and vibrant pink silk lehenga choli for little girls. Lightweight with elegant mirror work detailing.",
+        price: 4599,
+        sizes: ["2-3Y", "4-5Y", "6-7Y", "8-9Y"],
+        category: "kids",
+        image: womenImg, // Reusing image as placeholder
+        tags: ["Kids", "Bestseller"],
+        fabric: "Art Silk",
+        color: "Pink",
+    },
+    
+    // ─── Accessories ───
+    {
+        id: "a1",
+        name: "Premium Winter Beanie",
+        description:
+            "A soft and warm premium winter beanie hat. Perfect accessory to keep you cozy during cold months.",
+        price: 999,
+        sizes: ["Free Size"],
+        category: "accessories",
+        image: casualImg, // Reusing image as placeholder
+        tags: ["Winter", "Unisex"],
+        fabric: "Wool Merino Blend",
+        color: "Charcoal Grey",
+    },
+    {
+        id: "a2",
+        name: "Cashmere Muffler",
+        description:
+            "A luxurious cashmere blend muffler scarf. Elegant and incredibly soft, perfect for both men and women.",
+        price: 2499,
+        sizes: ["Free Size"],
+        category: "accessories",
+        image: traditionalImg, // Reusing image as placeholder
+        tags: ["Luxury", "Winter"],
+        fabric: "Cashmere Blend",
+        color: "Beige",
+    },
     {
         id: "s4",
         name: "Beige Formal Blazer",
@@ -270,8 +325,8 @@ export const getProductById = (id: string): Product | undefined => {
 };
 
 export const categories = [
-    { slug: "women", name: "Women's Collection", description: "Exquisite ethnic & contemporary wear for the modern woman" },
-    { slug: "men", name: "Men's Collection", description: "Premium sherwanis, suits & smart casuals for every occasion" },
-    { slug: "new-arrivals", name: "New Arrivals", description: "Fresh styles just added to our collection" },
-    { slug: "sale", name: "Sale", description: "Premium fashion at unbeatable prices — limited time only" },
+    { slug: "men", name: "Men", description: "Premium sherwanis, suits, jackets, coats & smart casuals" },
+    { slug: "women", name: "Women", description: "Exquisite ethnic wear, jackets, coats, sweatshirts & cardigans" },
+    { slug: "kids", name: "Kids", description: "Adorable and comfortable jackets, coats, and sweaters for little ones" },
+    { slug: "accessories", name: "Accessories", description: "Comfortable thermals, socks, caps, mufflers & hand gloves for all" },
 ];

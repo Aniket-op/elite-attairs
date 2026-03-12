@@ -10,6 +10,7 @@ import ProductCard from "@/components/ProductCard";
 import { getProductById, getWhatsAppLink, products } from "@/data/products";
 import { useCart } from "@/context/CartContext";
 import { useWishlist } from "@/context/WishlistContext";
+import EnquiryForm from "@/components/EnquiryForm";
 
 const ProductDetail = () => {
     const { id } = useParams<{ id: string }>();
@@ -246,6 +247,16 @@ const ProductDetail = () => {
                                 <MessageCircle size={16} strokeWidth={2} />
                                 Inquire / Custom Fit on WhatsApp
                             </a>
+
+                            {/* Enquiry Form Button */}
+                            <button
+                                onClick={() => {
+                                    document.getElementById('enquiry-section')?.scrollIntoView({ behavior: 'smooth' });
+                                }}
+                                className="flex items-center justify-center gap-3 w-full border border-gold text-gold hover:bg-gold hover:text-accent-foreground px-8 py-3 font-body text-[11px] font-bold tracking-[0.2em] uppercase transition-all duration-300"
+                            >
+                                Submit Bulk / Custom Enquiry
+                            </button>
                         </div>
 
                         {/* Trust badges */}
@@ -289,6 +300,11 @@ const ProductDetail = () => {
                     </div>
                 </section>
             )}
+
+            {/* Product Enquiry Section */}
+            <section id="enquiry-section" className="mx-auto max-w-7xl px-6 py-16 md:py-20 border-t border-border">
+                <EnquiryForm />
+            </section>
 
             <Footer />
         </div>

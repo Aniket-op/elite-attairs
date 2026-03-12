@@ -5,6 +5,7 @@ import CategorySection from "@/components/CategorySection";
 import FeaturedCollections from "@/components/FeaturedCollections";
 import SaleBanner from "@/components/SaleBanner";
 import TrustSection from "@/components/TrustSection";
+import EnquiryForm from "@/components/EnquiryForm";
 import Newsletter from "@/components/Newsletter";
 import Footer from "@/components/Footer";
 
@@ -17,6 +18,9 @@ const Index = () => (
     <FeaturedCollections />
     <SaleBanner />
     <TrustSection />
+    <section className="py-20 bg-background">
+      <EnquiryForm />
+    </section>
     <Newsletter />
     <Footer />
   </div>
