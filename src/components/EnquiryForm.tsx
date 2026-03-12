@@ -1,16 +1,31 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toast } from "sonner";
-import { categories } from "@/data/products";
+import { categories, WHATSAPP_NUMBER, Product } from "@/data/products";
+import { MessageCircle, Send } from "lucide-react";
 
-const EnquiryForm = () => {
+interface EnquiryFormProps {
+    prefilledProduct?: Product;
+}
+
+const EnquiryForm = ({ prefilledProduct }: EnquiryFormProps) => {
     const [formData, setFormData] = useState({
         fullName: "",
         companyName: "",
-        category: "",
+        category: prefilledProduct ? (prefilledProduct.category === "sale" || prefilledProduct.category === "new-arrivals" ? "other" : prefilledProduct.category) : "",
         contactNumber: "",
         emailAddress: "",
-        details: ""
+        details: prefilledProduct ? `I am interested in the following product:\n\nName: ${prefilledProduct.name}\nPrice: ₹${prefilledProduct.price.toLocaleString("en-IN")}\n\nAdditional Details:\n` : ""
     });
+
+    useEffect(() => {
+        if (prefilledProduct) {
+            setFormData(prev => ({
+                ...prev,
+                category: prefilledProduct.category === "sale" || prefilledProduct.category === "new-arrivals" ? "other" : prefilledProduct.category,
+                details: `I am interested in the following product:\n\nName: ${prefilledProduct.name}\nPrice: ₹${prefilledProduct.price.toLocaleString("en-IN")}\n\nAdditional Details:`
+            }));
+        }
+    }, [prefilledProduct]);
 
     const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -51,6 +66,23 @@ const EnquiryForm = () => {
             emailAddress: "",
             details: ""
         });
+    };
+
+    const handleWhatsAppSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        const formErrors = validateForm();
+        if (Object.keys(formErrors).length > 0) {
+            setErrors(formErrors);
+            toast.error("Please fill in all required fields correctly.");
+            return;
+        }
+
+        const message = `*New Context Enquiry*\n\n*Name:* ${formData.fullName}\n*Company:* ${formData.companyName || "N/A"}\n*Category:* ${formData.category}\n*Phone:* ${formData.contactNumber}\n*Email:* ${formData.emailAddress}\n\n*Details:*\n${formData.details}`;
+        
+        const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, "_blank");
+
+        toast.success("Redirecting to WhatsApp...");
     };
 
     return (
@@ -174,14 +206,28 @@ const EnquiryForm = () => {
                     {errors.details && <p className="text-red-500 text-xs mt-1 font-body">{errors.details}</p>}
                 </div>
 
-                <div className="pt-4">
-                    <button type="submit" className="luxury-btn w-full py-4 text-sm tracking-[0.15em]">
+                <div className="pt-4 flex flex-col md:flex-row gap-4">
+                    <button 
+                        type="submit" 
+                        onClick={handleSubmit}
+                        className="flex-1 flex items-center justify-center gap-2 bg-foreground text-primary-foreground hover:bg-gold hover:text-accent-foreground px-8 py-4 font-body text-[12px] font-bold tracking-[0.2em] uppercase transition-all duration-300"
+                    >
+                        <Send size={16} strokeWidth={2} />
                         Submit Enquiry
                     </button>
-                    <p className="text-center text-[10px] text-muted-foreground mt-4 font-body tracking-wider uppercase">
-                        All fields marked * are required. We respect your privacy.
-                    </p>
+                    
+                    <button 
+                        type="button" 
+                        onClick={handleWhatsAppSubmit}
+                        className="flex-1 flex items-center justify-center gap-2 bg-[#25D366] text-white hover:bg-[#1DA851] px-8 py-4 font-body text-[12px] font-bold tracking-[0.2em] uppercase transition-all duration-300"
+                    >
+                        <MessageCircle size={16} strokeWidth={2} />
+                        Send via WhatsApp
+                    </button>
                 </div>
+                <p className="text-center text-[10px] text-muted-foreground mt-4 font-body tracking-wider uppercase">
+                    All fields marked * are required. We respect your privacy.
+                </p>
             </form>
         </div>
     );

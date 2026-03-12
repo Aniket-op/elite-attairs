@@ -237,25 +237,15 @@ const ProductDetail = () => {
                                 </button>
                             </div>
 
-                            {/* WhatsApp Button */}
-                            <a
-                                href={whatsappLink}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center justify-center gap-3 w-full border border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white px-8 py-3 font-body text-[11px] font-bold tracking-[0.2em] uppercase transition-all duration-300"
-                            >
-                                <MessageCircle size={16} strokeWidth={2} />
-                                Inquire / Custom Fit on WhatsApp
-                            </a>
-
-                            {/* Enquiry Form Button */}
+                            {/* Combined Inquiry Button */}
                             <button
                                 onClick={() => {
                                     document.getElementById('enquiry-section')?.scrollIntoView({ behavior: 'smooth' });
                                 }}
                                 className="flex items-center justify-center gap-3 w-full border border-gold text-gold hover:bg-gold hover:text-accent-foreground px-8 py-3 font-body text-[11px] font-bold tracking-[0.2em] uppercase transition-all duration-300"
                             >
-                                Submit Bulk / Custom Enquiry
+                                <MessageCircle size={16} strokeWidth={2} />
+                                Inquire / Custom Order
                             </button>
                         </div>
 
@@ -303,7 +293,7 @@ const ProductDetail = () => {
 
             {/* Product Enquiry Section */}
             <section id="enquiry-section" className="mx-auto max-w-7xl px-6 py-16 md:py-20 border-t border-border">
-                <EnquiryForm />
+                <EnquiryForm prefilledProduct={product} />
             </section>
 
             <Footer />
