@@ -1,32 +1,4 @@
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+<img width="927" height="807" alt="image" src="https://github.com/user-attachments/assets/4f5dfec4-f373-4d78-8149-3dde9f00a327" />
+<img width="940" height="802" alt="image" src="https://github.com/user-attachments/assets/a4e71c0d-1aa0-438d-a951-378924697c79" />
+<img width="933" height="914" alt="image" src="https://github.com/user-attachments/assets/65adc58e-6d25-4fe4-b945-4eda216a7b80" />
+<img width="929" height="934" alt="image" src="https://github.com/user-attachments/assets/58b36818-81f8-4248-a6d4-ee7399ff6d2e" />
